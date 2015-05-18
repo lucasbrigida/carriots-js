@@ -1,0 +1,26 @@
+{
+  "name": "carriots-js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/lucasbrigida/carriots-js",
+  "authors": [
+    "lucasbrigida <grillobright@gmail.com>"
+  ],
+  "description": "Carriots library for javascript",
+  "main": "carriots.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "carriots",
+    "js",
+    "iot",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ]
+}
