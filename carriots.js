@@ -6,6 +6,10 @@ var Carriots = (function() {
 
     function config(options) {
       self.options = options;
+
+      if(!options['apiKey']) {
+        throw new Error('apiKey is not defined in config');
+      }
     }
 
 /**********************
@@ -31,7 +35,7 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
 
@@ -56,6 +60,7 @@ var Carriots = (function() {
       }
     }
 
+
     function assets () {
       function create () {
         
@@ -73,7 +78,7 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
 
@@ -87,6 +92,7 @@ var Carriots = (function() {
         }
       }
     }
+
 
     function devices () {
       function create () {
@@ -105,7 +111,7 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
 
@@ -123,16 +129,45 @@ var Carriots = (function() {
         }
       }
 
-      function streams () {
-        function list () {
+
+      function streams (deviceId) {
+        if(!deviceId) throw new Error('Device ID is not defined')
+
+        function list (options) {
+
+          console.log(self.options);
+
+          return jQuery.ajax(defaultOptions.apiUrl+'devices/'+deviceId+'/streams', {
+            crossDomain: true,
+            headers: {
+              'carriots.apiKey': self.options.apiKey
+            },
+            data: options,
+            method: 'GET'
+          });
+        }
+
+        function remove () {
         
         }
 
-        function delete () {
-        
-        }
+        return {
+          list: list,
+          remove: remove
+        };
       }
+
+      return {
+        create: create,
+        show: show,
+        list: list,
+        update: update,
+        remove: remove,
+        config: config,
+        streams: streams
+      };
     }
+
 
     function models () {
       function create () {
@@ -151,7 +186,7 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
     }
@@ -174,10 +209,11 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
     }
+
 
     function streams () {
       function create () {
@@ -192,10 +228,11 @@ var Carriots = (function() {
         
       }
 
-      function delete () {
+      function remove () {
         
       }
     }
+
 
     function triggers () {
       function create () {
@@ -214,7 +251,7 @@ var Carriots = (function() {
 
       }
 
-      function delete () {
+      function remove () {
         
       }
     }
@@ -242,10 +279,11 @@ var Carriots = (function() {
 
       }
 
-      function delete () {
+      function remove () {
         
       }
     }
+
 
     function listeners () {
       function create () {
@@ -264,7 +302,7 @@ var Carriots = (function() {
 
       }
 
-      function delete () {
+      function remove () {
         
       }
     }

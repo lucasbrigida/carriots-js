@@ -6,6 +6,13 @@
     <script src="../carriots.js"></script>
   </head>
   <body>
-    
+    <script>
+    Carriots.config({
+      apiKey: 'cea270e7240154e2199ecc2d0f7e8a22dfb3ff95faa214b70495e3de3bf4b3d4'
+    });
+
+    var arduino = Carriots.devices();
+    arduino.streams('defaultDevice@lucasbrigida.lucasbrigida').list();
+    </script>
   </body>
 </html>
