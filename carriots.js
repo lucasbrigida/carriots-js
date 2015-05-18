@@ -134,9 +134,6 @@ var Carriots = (function() {
         if(!deviceId) throw new Error('Device ID is not defined')
 
         function list (options) {
-
-          console.log(self.options);
-
           return jQuery.ajax(defaultOptions.apiUrl+'devices/'+deviceId+'/streams', {
             crossDomain: true,
             headers: {
