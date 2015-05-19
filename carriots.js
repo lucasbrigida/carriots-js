@@ -443,40 +443,110 @@ var Carriots = (function() {
  *
  **********************/
     function data () {
-      function create () {
-        
+      function create (options) {
+        return jQuery.ajax({
+          method: 'POST',
+          url: defaultOptions.apiUrl+'streams/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
       
-      function show () {
-        
+      function show (developerId, options) {
+        if(!developerId) throw new Error('Developer ID is not defined');
+
+        return jQuery.ajax({
+          method: 'GET',
+          url: defaultOptions.apiUrl+'streams/'+developerId+'/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
 
-      function list () {
-        
+      function list (options) {
+        return jQuery.ajax({
+          method: 'GET',
+          url: defaultOptions.apiUrl+'streams/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
 
-      function remove () {
-        
+      function remove (developerId, options) {
+        if(!developerId) throw new Error('Developer ID is not defined');
+
+        return jQuery.ajax({
+          method: 'DELETE',
+          url: defaultOptions.apiUrl+'streams/'+developerId+'/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
+
+      return {
+        create: create,
+        show: show,
+        list: list,
+        remove: remove
+      };
     }
 
 
-    function streams () {
-      function create () {
-        
+    function status () {
+      function create (options) {
+        return jQuery.ajax({
+          method: 'POST',
+          url: defaultOptions.apiUrl+'status/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
       
-      function show () {
-        
+      function show (developerId, options) {
+        if(!developerId) throw new Error('Developer ID is not defined');
+
+        return jQuery.ajax({
+          method: 'GET',
+          url: defaultOptions.apiUrl+'streams/'+developerId+'/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
 
-      function list () {
-        
+      function list (options) {
+        return jQuery.ajax({
+          method: 'GET',
+          url: defaultOptions.apiUrl+'streams/?_t=sta',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        }); 
       }
 
-      function remove () {
-        
+      function remove (developerId, options) {
+        if(!developerId) throw new Error('Developer ID is not defined');
+
+        return jQuery.ajax({
+          method: 'DELETE',
+          url: defaultOptions.apiUrl+'streams/'+developerId+'/',
+          data: options,
+          crossDomain: true,
+          headers: defaultOptions.headers
+        });
       }
+
+      return {
+        create: create,
+        show: show,
+        list: list,
+        remove: remove
+      };
     }
 
 
@@ -500,6 +570,14 @@ var Carriots = (function() {
       function remove () {
         
       }
+
+      return {
+        create: create,
+        show: show,
+        list: list,
+        update: update,
+        remove: remove
+      };
     }
 
 
@@ -528,6 +606,14 @@ var Carriots = (function() {
       function remove () {
         
       }
+      
+      return {
+        create: create,
+        show: show,
+        list: list,
+        update: update,
+        remove: remove
+      };
     }
 
 
@@ -551,6 +637,14 @@ var Carriots = (function() {
       function remove () {
         
       }
+
+      return {
+        create: create,
+        show: show,
+        list: list,
+        update: update,
+        remove: remove
+      };
     }
 
     return {
@@ -561,7 +655,7 @@ var Carriots = (function() {
       models: models,
 
       data: data,
-      streams: streams,
+      status: status,
       triggers: triggers,
 
       rules: rules,
