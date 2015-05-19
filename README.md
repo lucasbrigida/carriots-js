@@ -1,7 +1,10 @@
 #CarriotsJS is library for Carriot - Internet of Things Platform
 Demo
 ====
-![demo](http://s8.postimg.org/ojg18ss51/Screenshot_from_2015_05_19_03_40_46.png)    
+![demo](http://s8.postimg.org/ojg18ss51/Screenshot_from_2015_05_19_03_40_46.png) 
+
+[Visit DEMO](http://rawgit.com/lucasbrigida/carriots-js/master/test/index.html)
+
 Description
 =========
 CarriotsJS is a library for javascript to be used in the integration of hardware and software through the internet platform of the things Carriots
