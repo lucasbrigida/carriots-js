@@ -315,10 +315,12 @@ var Carriots = (function() {
 
         function download (deviceId, fileName, fileVersion) {
           if(!deviceId) throw new Error('Device ID is not defined');
+          if(!fileName) throw new Error('File Name is not defined');
+          if(!fileVersion) throw new Error('File Version is not defined');
 
           return jQuery.ajax({
             method: 'GET',
-            url: defaultOptions.apiUrl+'devices/'+deviceId+'/deviceconfigs/'+fileName+'/'fileVersion+'/',
+            url: defaultOptions.apiUrl+'devices/'+deviceId+'/deviceconfigs/'+fileName+'/'+fileVersion+'/',
             crossDomain: true,
             headers: defaultOptions.headers
           });
