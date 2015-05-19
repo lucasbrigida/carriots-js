@@ -24,6 +24,12 @@ You need the **jquery** installed, if you not have in your project, run command 
 ``` sh
 $ bower install jquery --save
 ```
+
+### Add script
+``` html
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+```
+
 ### Install
 ``` sh
 $ bower install carriots-js --save
