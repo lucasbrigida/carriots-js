@@ -1,37 +1,424 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Coffee Counter | Makerhacklab</title>
+  <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+  <!--<script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/lodash/lodash.min.js"></script>-->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
-    <script src="../carriots.js"></script>
-  </head>
-  <body>
-    <script>
-    Carriots.config({
-      apiKey: 'cea270e7240154e2199ecc2d0f7e8a22dfb3ff95faa214b70495e3de3bf4b3d4'
-    });
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.8.0/lodash.min.js"></script>
+  <script src="../carriots.js"></script>
+  <style>
+  body {
+    background: #3f4249;
+    margin: 0;
+  }
+  
+  .intro {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Asap', sans-serif;
+    text-align: center;
+    color: #fff !important;
+    text-shadow: 0px 1px 1px #4e525a;
+  }
+  
+  .intro h1 {
+    font-size: 3em;
+  }
+  
+  .intro p {
+    display: inline-block;
+    font-size: 1.35em;
+  }
+  
+  .intro img {
+    display: inline-block;
+  }
+  
+  .coffee {
+    width: 320px;
+    height: 100%;
+    margin: 0 auto 100px auto;
+  }
+  
+  .coffee-bg-lid {
+    position: relative;
+    top: 176px;
+    left: 2px;
+    border-radius: 60%;
+    background: #e6e6e6;
+    width: 312px;
+    height: 35px;
+    z-index: -5;
+  }
+  
+  .coffee-rim,
+  .coffee-rim-bt {
+    position: relative;
+    border-radius: 50%;
+    border-bottom: 3px solid #cdcdcd;
+    z-index: 10;
+  }
+  
+  .coffee-rim {
+    top: 200px;
+    left: 13px;
+    width: 288px;
+    height: 25px;
+  }
+  
+  .coffee-rim-bt {
+    top: 410px;
+    left: 70px;
+    width: 175px;
+    height: 65px;
+  }
+  
+  .coffee-color {
+    position: relative;
+    top: 50px;
+    left: 8px;
+    border-radius: 50%;
+    border-bottom: 4px solid #fff;
+    border-top: 7px solid #c0a25a;
+    background: #d6b971;
+    width: 302px;
+    height: 20px;
+    z-index: 5;
+  }
+  
+  .coffee-cup {
+    position: relative;
+    top: 25px;
+    border-top: 360px solid #e6e6e6;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 16px solid #e6e6e6;
+    height: 0;
+    width: 155px;
+    border-radius: 5% 5% 45% 45%;
+    z-index: 4;
+  }
+  
+  .coffee-shadow {
+    position: relative;
+    top: 0;
+    left: 20px;
+    background: #393c41;
+    height: 20px;
+    width: 275px;
+    border-radius: 50%;
+    box-shadow: -1px 2px 10px 8px #393c41;
+  }
+  
+  .steam {
+    position: relative;
+    top: 40px;
+    left: 125px;
+    -webkit-animation: steam 5s linear infinite 3s;
+    -moz-animation: steam 5s linear infinite 3s;
+    -ms-animation: steam 5s linear infinite 3s;
+    -o-animation: steam 5s linear infinite 3s;
+    animation: steam 5s linear infinite 3s;
+  }
+  
+  .steam:before,
+  .steam:after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: -15px;
+    border-right: 0px solid transparent;
+    border-top: 2px solid #d6d2d2;
+    border-left: 5px solid #d6d2d2;
+    border-bottom: 2px solid transparent;
+    width: 40px;
+    height: 70px;
+    z-index: 4;
+    border-radius: 80% 0 10% 10%;
+    -webkit-transform: rotate(168deg) skewY(10deg);
+    -moz-transform: rotate(168deg) skewY(10deg);
+    -ms-transform: rotate(168deg) skewY(10deg);
+    -o-transform: rotate(168deg) skewY(10deg);
+    transform: rotate(168deg) skewY(10deg);
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+  }
+  
+  .steam:after {
+    top: 40px;
+    left: -35px;
+    z-index: 4;
+    border-radius: 80% 0 10% 10%;
+    -webkit-transform: rotate(315deg) skewY(10deg);
+    -moz-transform: rotate(315deg) skewY(10deg);
+    -ms-transform: rotate(315deg) skewY(10deg);
+    -o-transform: rotate(315deg) skewY(10deg);
+    transform: rotate(315deg) skewY(10deg);
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+  }
+  
+  @-webkit-keyframes steam {
+    0% {
+      top: 100px;
+      opacity: .075;
+      visibility: visible;
+    }
+    20% {
+      top: 80px;
+      opacity: 0.2;
+    }
+    40% {
+      top: 60px;
+      opacity: 0.4;
+    }
+    60% {
+      top: 40px;
+      opacity: 0.2;
+    }
+    80% {
+      top: 20px;
+      opacity: .075;
+    }
+    100% {
+      top: 0px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @-moz-keyframes steam {
+    0% {
+      top: 100px;
+      opacity: .075;
+      visibility: visible;
+    }
+    20% {
+      top: 80px;
+      opacity: 0.2;
+    }
+    40% {
+      top: 60px;
+      opacity: 0.4;
+    }
+    60% {
+      top: 40px;
+      opacity: 0.2;
+    }
+    80% {
+      top: 20px;
+      opacity: .075;
+    }
+    100% {
+      top: 0px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @-ms-keyframes steam {
+    0% {
+      top: 100px;
+      opacity: .075;
+      visibility: visible;
+    }
+    20% {
+      top: 80px;
+      opacity: 0.2;
+    }
+    40% {
+      top: 60px;
+      opacity: 0.4;
+    }
+    60% {
+      top: 40px;
+      opacity: 0.2;
+    }
+    80% {
+      top: 20px;
+      opacity: .075;
+    }
+    100% {
+      top: 0px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @-o-keyframes steam {
+    0% {
+      top: 100px;
+      opacity: .075;
+      visibility: visible;
+    }
+    20% {
+      top: 80px;
+      opacity: 0.2;
+    }
+    40% {
+      top: 60px;
+      opacity: 0.4;
+    }
+    60% {
+      top: 40px;
+      opacity: 0.2;
+    }
+    80% {
+      top: 20px;
+      opacity: .075;
+    }
+    100% {
+      top: 0px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+  @keyframes steam {
+    0% {
+      top: 100px;
+      opacity: .075;
+      visibility: visible;
+    }
+    20% {
+      top: 80px;
+      opacity: 0.2;
+    }
+    40% {
+      top: 60px;
+      opacity: 0.4;
+    }
+    60% {
+      top: 40px;
+      opacity: 0.2;
+    }
+    80% {
+      top: 20px;
+      opacity: .075;
+    }
+    100% {
+      top: 0px;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  </style>
+  <!-- Customization -->
+  <style>
+  .row {
+    width: 100%;
+  }
+  
+  .one-half {
+    width: 50%;
+    float: left;
+  }
+  
+  #counter-box {
+    width: 100%;
+    font-family: 'Asap', sans-serif;
+    text-align: center;
+    color: #fff !important;
+    text-shadow: 0px 1px 1px #4e525a;
+    padding-top: 25%;
+  }
+  
+  #counter-box #counter {
+    font-size: 15em;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  #counter-box #label {
+    font-size: 3em;
+    padding: 0px;
+    margin: 0px;
+  }
+  </style>
+  <!-- //Customization -->
+</head>
 
-    var arduino = Carriots.devices();
-    arduino.streams().list('defaultDevice@lucasbrigida.lucasbrigida', {
-      sort: 'at',
-      order: -1
-    });
+<body>
+  <div class="intro">
+    <h1>Coffee Counter</h1>
+    <p>A coffee counter demo using carriots</p>
+  </div>
+  <div class="row">
+    <div class="one-half">
+      <div class="coffee">
+        <span class="steam"></span>
+        <div class="coffee-bg-lid"></div>
+        <div class="coffee-rim"></div>
+        <div class="coffee-rim-bt"></div>
+        <div class="coffee-color"></div>
+        <div class="coffee-cup"></div>
+        <div class="coffee-shadow"></div>
+      </div>
+    </div>
+    <div class="one-half">
+      <div id="counter-box">
+        <h1 id="counter">0</h1>
+        <p id="label">Loading...</p>
+      </div>
+    </div>
+  </div>
+  <script>
+  //Define apiKey
+  Carriots.config({
+    apiKey: '4852309cd37ff6b1ffa6a807608166ecb31ba5b79cec49951dc3dc69fcef2ea3'
+  });
 
-    var stream = Carriots.streams();
-    stream.create({
+  //Define um dispositivo
+  var arduino = Carriots.devices();
+
+  //Lista todos os streams de um determinado dispositivo
+  arduino.streams().list('defaultDevice@lucasbrigida.lucasbrigida', {
+    sort: 'at',
+    order: -1
+  })
+  .done(function(res){
+    if (!('result' in res)) {
+      return;
+    }
+
+    var coffees = 0;
+    for (var i in res.result) {
+      if (res.result[i].data.coffees) { 
+        coffees += parseInt(res.result[i].data.coffees);
+      }      
+    }
+
+    $('#counter-box #counter').text(coffees);
+    $('#counter-box #label').text('Coffees');
+  });
+
+
+  //Cria um stream para determinado dispositivo
+  var stream = Carriots.streams();
+  stream.create({
       "protocol": "v1",
       "checksum": "",
       "device": "defaultDevice@lucasbrigida.lucasbrigida",
       "at": "now",
       "data": {
-          "coffes": 1
+        "coffees": 1
       }
     })
-    .done(function(res){
+    .done(function(res) {
       console.log(res);
     });
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
