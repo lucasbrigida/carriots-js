@@ -13,9 +13,7 @@ var Carriots = (function() {
 
       //Set default headers
       defaultOptions.headers = {
-        'carriots.apiKey': self.options.apiKey,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'carriots.apiKey': self.options.apiKey
       };
     }
 
@@ -30,7 +28,7 @@ var Carriots = (function() {
         return jQuery.ajax({
           method: 'POST',
           url: defaultOptions.apiUrl+'groups/',
-          data: options,
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -148,6 +146,7 @@ var Carriots = (function() {
         return jQuery.ajax({
           method: 'POST',
           url: defaultOptions.apiUrl+'assets/',
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -236,7 +235,7 @@ var Carriots = (function() {
         return jQuery.ajax({
           method: 'POST',
           url: defaultOptions.apiUrl+'devices/',
-          data: options,
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -295,7 +294,7 @@ var Carriots = (function() {
           return jQuery.ajax({
             method: 'POST',
             url: defaultOptions.apiUrl+'devices/'+deviceId+'/deviceconfigs/',
-            data: options,
+            data: JSON.stringify(options),
             crossDomain: true,
             headers: defaultOptions.headers
           });
@@ -376,7 +375,7 @@ var Carriots = (function() {
         return jQuery.ajax({
           method: 'POST',
           url: defaultOptions.apiUrl+'models/',
-          data: options,
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -442,12 +441,12 @@ var Carriots = (function() {
  *  Data Management
  *
  **********************/
-    function data () {
+    function streams () {
       function create (options) {
         return jQuery.ajax({
-          method: 'POST',
           url: defaultOptions.apiUrl+'streams/',
-          data: options,
+          method: 'POST',
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -501,7 +500,7 @@ var Carriots = (function() {
         return jQuery.ajax({
           method: 'POST',
           url: defaultOptions.apiUrl+'status/',
-          data: options,
+          data: JSON.stringify(options),
           crossDomain: true,
           headers: defaultOptions.headers
         });
@@ -654,7 +653,7 @@ var Carriots = (function() {
       devices: devices,
       models: models,
 
-      data: data,
+      streams: streams,
       status: status,
       triggers: triggers,
 

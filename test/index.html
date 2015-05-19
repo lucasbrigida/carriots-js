@@ -18,6 +18,20 @@
       sort: 'at',
       order: -1
     });
+
+    var stream = Carriots.streams();
+    stream.create({
+      "protocol": "v1",
+      "checksum": "",
+      "device": "defaultDevice@lucasbrigida.lucasbrigida",
+      "at": "now",
+      "data": {
+          "coffes": 1
+      }
+    })
+    .done(function(res){
+      console.log(res);
+    });
     </script>
   </body>
 </html>
