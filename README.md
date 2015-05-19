@@ -1,4 +1,6 @@
-#CarriotsJS is library for Carriot - Internet of Things Platform
+#CarriotsJS
+Library for Carriot - Internet of Things Platform
+
 Demo
 ====
 ![demo](http://s8.postimg.org/ojg18ss51/Screenshot_from_2015_05_19_03_40_46.png) 
