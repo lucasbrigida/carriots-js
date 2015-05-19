@@ -7,6 +7,8 @@ Demo
 
 [Visit DEMO](http://rawgit.com/lucasbrigida/carriots-js/master/test/index.html)
 
+The coffee animation in DEMO is a fork this [codepen](http://codepen.io/knard/pen/Cyrwv)
+
 Description
 =========
 CarriotsJS is a library for javascript to be used in the integration of hardware and software through the internet platform of the things Carriots
