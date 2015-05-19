@@ -35,6 +35,19 @@ Don't know **Carriots** [learn more](https://www.carriots.com).
 ``` bash
 $ bower uninstall carriots-js --save
 ```
+
+### Add script
+``` html
+<script src="../bower_components/carriots-js/carriots.js"></script>
+```
+
+OR
+
+``` html
+<script src="http://rawgit.com/lucasbrigida/carriots-js/master/carriots.js"></script>
+```
+
+
 ### How use - Get data
 Get data from a specific device. [Follow specification](https://www.carriots.com/documentation/api/device_management#d-list-stream), 
 ``` javascript
