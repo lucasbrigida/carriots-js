@@ -44,7 +44,7 @@ $ bower uninstall carriots-js --save
 
 ### Add script
 ``` html
-<script src="../bower_components/carriots-js/carriots.js"></script>
+<script src="../bower_components/carriots-js/carriots.min.js"></script>
 ```
 
 OR
