@@ -50,7 +50,7 @@ $ bower uninstall carriots-js --save
 OR
 
 ``` html
-<script src="http://rawgit.com/lucasbrigida/carriots-js/master/carriots.js"></script>
+<script src="http://rawgit.com/lucasbrigida/carriots-js/master/carriots.min.js"></script>
 ```
 
 
